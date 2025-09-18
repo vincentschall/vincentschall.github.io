@@ -1,0 +1,36 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@800&family=Staatliches&display=swap');
+
+body, html {
+	height:100%;
+}
+
+body {
+	margin:0;
+	background:#12171b;	
+}
+
+* {
+	position:relative;
+}
+.wrapper {
+	height:100%;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	flex-direction:column;
+}
+
+
+h1 {
+	font-family: 'Saira Extra Condensed', sans-serif;
+	color:#86c7df;
+	font-size:clamp(32px, 12vw, 160px);
+	margin:0;
+	padding:0;
+	user-select:none;
+	text-transform:uppercase;
+	line-height:1.1cap;
+}
+
+
