@@ -41,7 +41,7 @@ function HexagonBackground({
     <div
       data-slot="hexagon-background"
       className={cn(
-        'relative size-full overflow-hidden dark:bg-neutral-900 bg-neutral-100',
+        'relative size-full overflow-hidden flex items-center justify-center dark:bg-neutral-900 bg-neutral-100',
         className
       )}
       {...props}>
