@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-      <h1>exploring julia sets</h1>
+      <h1>vincent schall</h1>
     </>
   )
 }

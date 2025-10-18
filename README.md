@@ -1,1 +1,1 @@
-personal website project. exploring julia sets
+personal website project.
