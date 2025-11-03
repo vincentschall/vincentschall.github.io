@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { HexagonBackground } from '@/components/ui/shadcn-io/hexagon-background'
 
 // Julia Set Renderer Component
-function JuliaSetRenderer() {
+function JuliaSetRenderer({ cRe = -0.7, cIm = 0.27015 }) {
     const canvasRef = useRef(null);
 
     useEffect(() => {
@@ -17,8 +17,6 @@ function JuliaSetRenderer() {
         const zoom = 1.5;
         const moveX = 0;
         const moveY = 0;
-        const cRe = -0.7;
-        const cIm = 0.27015;
 
         const imgData = ctx.createImageData(width, height);
         const pixels = imgData.data;
@@ -53,7 +51,7 @@ function JuliaSetRenderer() {
         }
 
         ctx.putImageData(imgData, 0, 0);
-    }, []);
+    }, [cRe, cIm]);  // Re-render on cRe or cIm change
 
     return <canvas ref={canvasRef} className="rounded-xl" />;
 }
@@ -73,6 +71,22 @@ function DoorIcon({ size = 32 }) {
 
 function App() {
     const [showJulia, setShowJulia] = useState(false);
+    const [cRe, setCRe] = useState(-0.7);
+    const [cIm, setCIm] = useState(0.27015);
+
+    const handleCReChange = (e) => {
+        const num = e.target.valueAsNumber;
+        if (!isNaN(num)) {
+            setCRe(num);
+        }
+    };
+
+    const handleCImChange = (e) => {
+        const num = e.target.valueAsNumber;
+        if (!isNaN(num)) {
+            setCIm(num);
+        }
+    };
 
     return (
         <div className="relative h-screen w-full flex items-center justify-center bg-background">
@@ -142,8 +156,34 @@ function App() {
                             Close
                         </button>
                         <h2 className="text-2xl font-bold mb-4 text-center text-foreground">Julia Set Fractal</h2>
-                        <p className="text-center text-foreground mb-4">c = -0.7 + 0.27015i</p>
-                        <JuliaSetRenderer />
+
+                        {/* Input Controls */}
+                        <div className="flex flex-col items-center mb-4 space-y-2">
+                            <label className="text-sm text-foreground">Complex Parameter c = </label>
+                            <div className="flex space-x-4">
+                                <input
+                                    type="number"
+                                    step="0.00001"
+                                    value={cRe}
+                                    onChange={handleCReChange}
+                                    className="w-24 px-2 py-1 border rounded text-foreground bg-background"
+                                    placeholder="Real"
+                                />
+                                <span className="text-foreground">+</span>
+                                <input
+                                    type="number"
+                                    step="0.00001"
+                                    value={cIm}
+                                    onChange={handleCImChange}
+                                    className="w-24 px-2 py-1 border rounded text-foreground bg-background"
+                                    placeholder="Imag"
+                                />
+                                <span className="text-foreground">i</span>
+                            </div>
+                        </div>
+
+                        <p className="text-center text-foreground mb-4">Current: c = {cRe} + {cIm}i</p>
+                        <JuliaSetRenderer cRe={cRe} cIm={cIm} />
                     </div>
                 </div>
             )}
