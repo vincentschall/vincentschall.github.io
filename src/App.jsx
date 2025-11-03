@@ -35,10 +35,19 @@ function JuliaSetRenderer() {
                     i++;
                 }
                 const idx = (y * width + x) * 4;
-                const color = i === maxIter ? 0 : (i / maxIter) * 255;
-                pixels[idx] = color;
-                pixels[idx + 1] = color * 0.5;
-                pixels[idx + 2] = 255 - color;
+
+                if (i === maxIter) {
+                    // Black for inside the set (background)
+                    pixels[idx] = 0;     // R
+                    pixels[idx + 1] = 0; // G
+                    pixels[idx + 2] = 0; // B
+                } else {
+                    // Bluish gradient for outside the set (fractal)
+                    const v = (i / maxIter) * 255;
+                    pixels[idx] = 0;           // R (black)
+                    pixels[idx + 1] = 0;       // G (black)
+                    pixels[idx + 2] = v;       // B (0 to full blue)
+                }
                 pixels[idx + 3] = 255;
             }
         }
