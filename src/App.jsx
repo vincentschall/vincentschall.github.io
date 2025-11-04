@@ -70,22 +70,11 @@ function DoorIcon({ size = 32 }) {
 
 function App() {
     const [showJulia, setShowJulia] = useState(false);
-    const [cRe, setCRe] = useState(-0.700);
-    const [cIm, setCIm] = useState(0.270);
+    const [cReStr, setCReStr] = useState("-0.700");
+    const [cImStr, setCImStr] = useState("0.270");
 
-    const handleCReChange = (e) => {
-        const num = e.target.valueAsNumber;
-        if (!isNaN(num)) {
-            setCRe(num);
-        }
-    };
-
-    const handleCImChange = (e) => {
-        const num = e.target.valueAsNumber;
-        if (!isNaN(num)) {
-            setCIm(num);
-        }
-    };
+    const cRe = parseFloat(cReStr) || 0;
+    const cIm = parseFloat(cImStr) || 0;
 
     return (
         <div className="relative h-screen w-full flex items-center justify-center bg-background">
@@ -95,7 +84,7 @@ function App() {
                 className="absolute inset-0"
             >
                 <div className="relative z-10 text-center text-foreground">
-                    <h1 className="text-5xl font-bold mb-6 tracking-tight">vincent schall</h1>
+                    <h1 className="text-5xl font-bold mb-6 tracking-tight">Vincent Schall</h1>
                     <nav className="text-xl mb-4">
                         <a
                             href="https://github.com/vincentschall"
@@ -149,39 +138,56 @@ function App() {
                 <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/70">
                     <div className="bg-background rounded-2xl p-6 max-w-full max-h-full overflow-auto relative">
                         <button
-                            className="absolute top-4 right-4 text-foreground hover:text-red-500 px-3 py-1 bg-gray-200 rounded font-semibold"
+                            className="atop-4 left-4 text-foreground hover:text-red-500 px-3 py-1 bg-gray-200 rounded font-semibold"
                             onClick={() => setShowJulia(false)}
                         >
                             Close
                         </button>
                         <h2 className="text-2xl font-bold mb-4 text-center text-foreground">Julia Set Fractal</h2>
+                        <fieldset className="flex flex-col items-center mb-4 space-y-3">
+                            <legend className="text-lg font-medium text-foreground">
+                                Complex Parameter c:
+                            </legend>
 
-                        {/* Input Controls */}
-                        <div className="flex flex-col items-center mb-4 space-y-2">
-                            <label className="text-sm text-foreground">Complex Parameter c: </label>
-                            <div className="flex space-x-4">
-                                <input
-                                    type="number"
-                                    step="0.001"
-                                    value={cRe}
-                                    onChange={handleCReChange}
-                                    className="w-24 px-2 py-1 border rounded text-foreground bg-background"
-                                    placeholder="Real"
-                                />
-                                <span className="text-foreground">+</span>
-                                <input
-                                    type="number"
-                                    step="0.001"
-                                    value={cIm}
-                                    onChange={handleCImChange}
-                                    className="w-24 px-2 py-1 border rounded text-foreground bg-background"
-                                    placeholder="Imag"
-                                />
-                                <span className="text-foreground">i</span>
+                            <div className="flex items-end space-x-2">
+                                {/* Real Part Input */}
+                                <div className="flex flex-col">
+                                    <label htmlFor="cReInput" className="text-sm text-foreground mb-1">
+                                        Real
+                                    </label>
+                                    <input
+                                        id="cReInput"
+                                        type="text"
+                                        inputMode="decimal"
+                                        value={cReStr}
+                                        onChange={(e) => setCReStr(e.target.value)}
+                                        className="w-24 px-2 py-1 border rounded text-foreground bg-background"
+                                    />
+                                </div>
+
+                                <span className="text-foreground pb-1 text-xl">+</span>
+
+                                {/* Imaginary Part Input */}
+                                <div className="flex flex-col">
+                                    <label htmlFor="cImInput" className="text-sm text-foreground mb-1">
+                                        Imaginary
+                                    </label>
+                                    <input
+                                        id="cImInput"
+                                        type="text"
+                                        inputMode="decimal"
+                                        value={cImStr}
+                                        onChange={(e) => setCImStr(e.target.value)}
+                                        className="w-24 px-2 py-1 border rounded text-foreground bg-background"
+                                    />
+                                </div>
+
+                                <span className="text-foreground pb-1 text-xl">i</span>
                             </div>
-                        </div>
+                        </fieldset>
 
                         <p className="text-center text-foreground mb-4">Current: c = {cRe} + {cIm}i</p>
+
                         <JuliaSetRenderer cRe={cRe} cIm={cIm} />
                     </div>
                 </div>
