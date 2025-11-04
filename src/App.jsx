@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { HexagonBackground } from '@/components/ui/shadcn-io/hexagon-background'
 
 // Julia Set Renderer Component
-function JuliaSetRenderer({ cRe = -0.7, cIm = 0.27015 }) {
+function JuliaSetRenderer({ cRe = -0.700, cIm = 0.270 }) {
     const canvasRef = useRef(null);
 
     useEffect(() => {
@@ -13,7 +13,7 @@ function JuliaSetRenderer({ cRe = -0.7, cIm = 0.27015 }) {
         const width = canvas.width = 600;
         const height = canvas.height = 600;
 
-        const maxIter = 300;
+        const maxIter = 500;
         const zoom = 1.5;
         const moveX = 0;
         const moveY = 0;
@@ -42,9 +42,9 @@ function JuliaSetRenderer({ cRe = -0.7, cIm = 0.27015 }) {
                 } else {
                     // Bluish gradient for outside the set (fractal)
                     const v = (i / maxIter) * 255;
-                    pixels[idx] = 0;           // R (black)
-                    pixels[idx + 1] = 0;       // G (black)
-                    pixels[idx + 2] = v;       // B (0 to full blue)
+                    pixels[idx] = 0;           // R
+                    pixels[idx + 1] = v;       // G
+                    pixels[idx + 2] = v;       // B
                 }
                 pixels[idx + 3] = 255;
             }
@@ -56,7 +56,6 @@ function JuliaSetRenderer({ cRe = -0.7, cIm = 0.27015 }) {
     return <canvas ref={canvasRef} className="rounded-xl" />;
 }
 
-// Door Open Icon Component (from Lucide)
 function DoorIcon({ size = 32 }) {
     return (
         <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -71,8 +70,8 @@ function DoorIcon({ size = 32 }) {
 
 function App() {
     const [showJulia, setShowJulia] = useState(false);
-    const [cRe, setCRe] = useState(-0.7);
-    const [cIm, setCIm] = useState(0.27015);
+    const [cRe, setCRe] = useState(-0.700);
+    const [cIm, setCIm] = useState(0.270);
 
     const handleCReChange = (e) => {
         const num = e.target.valueAsNumber;
@@ -159,11 +158,11 @@ function App() {
 
                         {/* Input Controls */}
                         <div className="flex flex-col items-center mb-4 space-y-2">
-                            <label className="text-sm text-foreground">Complex Parameter c = </label>
+                            <label className="text-sm text-foreground">Complex Parameter c: </label>
                             <div className="flex space-x-4">
                                 <input
                                     type="number"
-                                    step="0.00001"
+                                    step="0.001"
                                     value={cRe}
                                     onChange={handleCReChange}
                                     className="w-24 px-2 py-1 border rounded text-foreground bg-background"
@@ -172,7 +171,7 @@ function App() {
                                 <span className="text-foreground">+</span>
                                 <input
                                     type="number"
-                                    step="0.00001"
+                                    step="0.001"
                                     value={cIm}
                                     onChange={handleCImChange}
                                     className="w-24 px-2 py-1 border rounded text-foreground bg-background"
