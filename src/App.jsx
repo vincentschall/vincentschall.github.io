@@ -186,7 +186,7 @@ function App() {
                             </div>
                         </fieldset>
 
-                        <p className="text-center text-foreground mb-4">Current: c = {cRe} + {cIm}i</p>
+                        <p className="text-center text-foreground mb-4">Some of my favorites: -0.40+0.60i; 0.28+0.01i; -0.70-0.30i; -0.84-0.23i; -0.80+0.16i</p>
 
                         <JuliaSetRenderer cRe={cRe} cIm={cIm} />
                     </div>
