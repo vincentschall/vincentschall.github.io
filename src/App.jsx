@@ -1,5 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { HexagonBackground } from '@/components/ui/shadcn-io/hexagon-background'
+import vga1 from "../images/1.jpg";
+import vga2 from "../images/2.jpg";
+import vga3 from "../images/3.jpg";
 
 // Julia Set Renderer Component
 function JuliaSetRenderer({ cRe = -0.700, cIm = 0.270 }) {
@@ -82,9 +85,9 @@ const PROJECTS = [
         tech: "Hardware / Logic Gates",
         description: "VGA signal generator built from discrete logic components — counters, NAND gates, and resistors driving a real monitor at 800×600 60Hz. No microcontrollers. Implemented synchronous horizontal/vertical counter chains, NAND-based sync pulse generation, and a resistor-ladder DAC for analog RGB output.",
         images: [
-            { src: "./images/1.jpg", caption: "Image 1" },
-            { src: "./images/2.jpg", caption: "Full Circuit"},
-            { src: "./images/3.jpg", caption: "Image 2" },
+            { src: vga1, caption: "Image 1" },
+            { src: vga2, caption: "Full Circuit"},
+            { src: vga3, caption: "Image 2" },
         ],
         link: null,
         year: "2025",
