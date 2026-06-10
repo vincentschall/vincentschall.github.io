@@ -117,7 +117,7 @@ const PROJECTS = [
         id: "keylogger",
         title: "OS-level Keylogger",
         tech: "C / Linux",
-        description: "Complete OS-level keylogger for Linux written in C. Interfaces directly with kernel input subsystems to capture and log keystrokes system-wide. Built as a group project for a systems programming course.",
+        description: "Complete OS-level keylogger for Linux written in C. Interfaces directly with kernel input subsystems to capture and log keystrokes system-wide.",
         images: [],
         link: null,
         note: "Source not public.",
