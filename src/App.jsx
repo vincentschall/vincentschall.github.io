@@ -3,6 +3,8 @@ import { HexagonBackground } from '@/components/ui/shadcn-io/hexagon-background'
 import vga1 from "../images/1.jpg";
 import vga2 from "../images/2.jpg";
 import vga3 from "../images/3.jpg";
+import thimmePage from "../images/Mt_26v17-31.jpeg";
+import thimmeText from "../images/Mt_26v17-31.txt?raw";
 
 // Julia Set Renderer Component
 function JuliaSetRenderer({ cRe = -0.700, cIm = 0.270 }) {
@@ -123,6 +125,18 @@ const PROJECTS = [
         note: "Source not public.",
         year: "2026",
     },
+    {
+        id: "thimme",
+        title: "Thimme Bible OCR",
+        tech: "Python / Kraken / OpenAI API",
+        description: "OCR pipeline for digitizing the Thimme Bible, a historical German translation printed in Fraktur script. Page photos are OCR'd with Kraken, then corrected and segmented into numbered verses via the OpenAI API. Below: an original page and the generated text.",
+        images: [
+            { src: thimmePage, caption: "Original page (Mt 26,17–31)" },
+        ],
+        text: { content: thimmeText, caption: "Generated text" },
+        link: null,
+        year: "2026",
+    },
 ];
 
 function ImagePlaceholder({ caption }) {
@@ -163,13 +177,16 @@ function ProjectCard({ project }) {
         </div>
         </div>
         <p className="text-sm text-foreground/80 leading-relaxed">{project.description}</p>
-        {project.images && project.images.length > 0 && (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-1">
-            {project.images.map((img, i) => (
+        {((project.images && project.images.length > 0) || project.text) && (
+            <div className={`grid grid-cols-1 ${(project.images?.length || 0) + (project.text ? 1 : 0) >= 3 ? "sm:grid-cols-3" : "sm:grid-cols-2"} gap-3 mt-1`}>
+            {project.images && project.images.map((img, i) => (
                 img.src
                 ? <img key={i} src={img.src} alt={img.caption} className="rounded-lg w-full h-40 object-cover" />
                 : <ImagePlaceholder key={i} caption={img.caption} />
             ))}
+            {project.text && (
+                <pre className="rounded-lg w-full h-40 overflow-y-auto border border-border bg-muted p-3 text-xs font-mono whitespace-pre-wrap text-foreground/80">{project.text.content}</pre>
+            )}
             </div>
         )}
         </div>
