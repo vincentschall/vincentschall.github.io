@@ -219,7 +219,7 @@ function App() {
         <a href="https://lichess.org/@/HerrKules0721" target="_blank" rel="noopener noreferrer" className="hover:underline transition-colors">Lichess</a>
         </nav>
         <div className="text-lg">
-        <a href="mailto:hallo@vincentschall.com" className="hover:underline transition-colors">hallo@vincentschall.com</a>
+        <a href="mailto:in@vincentschall.com" className="hover:underline transition-colors">in@vincentschall.com</a>
         </div>
         </div>
         </HexagonBackground>
