@@ -1,12 +1,63 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vincentschall.com</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vincent Schall</title>
+  <meta name="description" content="Vincent Schall — CS student at the University of Basel, interested in quantum computing and complexity theory." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vincentschall.com/" />
+  <meta property="og:title" content="Vincent Schall" />
+  <meta property="og:description" content="CS student at the University of Basel, interested in quantum computing and complexity theory." />
+  <meta name="twitter:card" content="summary" />
+  <style>
+    :root { color-scheme: light dark; --fg: #1a1a1a; --muted: #6b6b6b; --bg: #fdfdfc; --link: #1a1a1a; }
+    @media (prefers-color-scheme: dark) {
+      :root { --fg: #e6e6e6; --muted: #8a8a8a; --bg: #111; --link: #e6e6e6; }
+    }
+    body {
+      margin: 0 auto; max-width: 38rem; padding: 4rem 1rem;
+      font: 16px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color: var(--fg); background: var(--bg);
+    }
+    h1 { font-size: 1.15rem; font-weight: 600; margin: 0 0 1.5rem; }
+    h2 { font-size: 1rem; font-weight: 600; margin: 2.5rem 0 .75rem; }
+    p { margin: 0 0 1rem; }
+    a { color: var(--link); text-underline-offset: 3px; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    li { margin: .35rem 0; }
+    .muted { color: var(--muted); }
+    footer { margin-top: 4rem; font-size: .85rem; color: var(--muted); }
+    footer a { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <h1 aria-label="Vincent Schall">|vincent⟩ = α|student⟩ + β|developer⟩</h1>
+
+  <p>Hi, I'm Vincent Schall. I study computer science (BSc) at the University of Basel, where I'm also the student representative for CS and work part-time as a macOS client administrator.</p>
+  <p>Interested in quantum computing and complexity theory.</p>
+
+  <h2>locked in on these subjects right now</h2>
+  <ul>
+    <li><a href="https://github.com/quantumjim/Quantum-Computation-course-Basel">Quantum Computation and Error Correction</a> <span class="muted">— Wootton</span></li>
+  </ul>
+
+  <h2>currently learning</h2>
+  <ul>
+    <li>quantum error correction</li>
+    <li>ice hockey</li>
+  </ul>
+
+  <h2>contact</h2>
+  <ul>
+    <li><a href="mailto:in@vincentschall.com">in@vincentschall.com</a></li>
+    <li><a href="https://github.com/vincentschall">github</a> · <a href="https://www.linkedin.com/in/vincent-schall-b15aa1365/">linkedin</a> · <a href="https://lichess.org/@/HerrKules0721">lichess</a></li>
+  </ul>
+
+
+  <footer>
+    <p>last updated: nov 2026 · <a href="/old/">old site</a></p>
+  </footer>
+</body>
 </html>
